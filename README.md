@@ -2,6 +2,26 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
+## Running locally
+
+Install dependencies and start the dev server:
+
+```sh
+npm install
+npm run dev
+```
+
+## Pointing at a different backend
+
+The app talks to the backend API over HTTP using a base URL and health path read from environment variables at build/dev time:
+
+- `VITE_API_BASE_URL` — the backend's origin, e.g. `http://localhost:3000` (default if unset)
+- `VITE_API_HEALTH_PATH` — the health check path appended to the base URL, e.g. `/health` (default if unset)
+
+Copy `.env.example` to `.env.local` and edit the values to point at a different backend; `.env.local` is gitignored and overrides the defaults without any source change.
+
+The "Backend Status" link in the header opens a proof-of-connectivity page that calls the configured health endpoint and shows a success or failure indicator.
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)

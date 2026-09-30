@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Header from './components/Header.jsx'
 import Board from './components/Board.jsx'
 import AddTaskModal from './components/AddTaskModal.jsx'
+import ConnectivityStatus from './components/ConnectivityStatus.jsx'
 import { canMove } from './lanes.js'
 import './App.css'
 
@@ -19,6 +20,7 @@ function loadTasks() {
 export default function App() {
   const [tasks, setTasks] = useState(loadTasks)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [view, setView] = useState('board')
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks))
@@ -44,8 +46,16 @@ export default function App() {
 
   return (
     <div className="app">
-      <Header onAddTaskClick={() => setIsModalOpen(true)} />
-      <Board tasks={tasks} onDropTask={handleDropTask} />
+      <Header
+        view={view}
+        onViewChange={setView}
+        onAddTaskClick={() => setIsModalOpen(true)}
+      />
+      {view === 'board' ? (
+        <Board tasks={tasks} onDropTask={handleDropTask} />
+      ) : (
+        <ConnectivityStatus />
+      )}
       {isModalOpen && (
         <AddTaskModal
           onClose={() => setIsModalOpen(false)}
