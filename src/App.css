@@ -16,6 +16,26 @@
   margin: 0;
 }
 
+.app-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-button {
+  background: #e5e7eb;
+  color: #374151;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.nav-button:hover {
+  background: #d1d5db;
+}
+
 .add-task-button {
   background: #2563eb;
   color: #fff;
@@ -163,4 +183,33 @@
 
 .modal-actions button[type='button'] {
   background: #e5e7eb;
+}
+
+.connectivity-status {
+  background: #f4f5f7;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.connectivity-indicator {
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 10px 14px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.connectivity-checking {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.connectivity-success {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.connectivity-failure {
+  background: #fee2e2;
+  color: #991b1b;
 }
